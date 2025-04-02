@@ -23,7 +23,7 @@ df <- data.frame(Intensity = as.vector(assay(filtered_se)),
 ggplot(df, aes(x = Sample, y = Intensity)) +
   geom_boxplot(fill = "lightblue") +
   theme_minimal() +
-  labs(title = "Distribució dels valors d'intensitat dels metabolits") +
+  labs(title = "Distribució dels valors d'intensitat dels fosfopèptids") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 #Es realitza el PCA sobre la matriu transposada (els components a separar, en aquest cas les mostres, han d'estar en files) de dades d'intensitat dels fosfopèptids filtrades amb la funció prcomp() i es guarden els resultats de l'anàlisi a pca_res:
 pca_res <- prcomp(t(assay(filtered_se)), scale. = TRUE)
@@ -83,7 +83,7 @@ clustered_data$Cluster <- as.factor(kmeans_result$cluster)
 fig <- plot_ly(clustered_data, x = ~PC1, y = ~PC2, z = ~PC3, 
                color = ~Cluster, colors = c('#1f77b4', '#ff7f0e', '#2ca02c'), 
                type = 'scatter3d', mode = 'markers', marker = list(size = 5)) %>%
-  layout(title = "Clustering K-means a 3D (PC1, PC2, PC3)",
+  layout(title = "Clustering K-means en 3D (PC1, PC2, PC3)",
          scene = list(xaxis = list(title = 'PC1'),
                       yaxis = list(title = 'PC2'),
                       zaxis = list(title = 'PC3')))
